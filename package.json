@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-	"repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/Andr11L55/Contact-Form.git"
   },
@@ -25,8 +25,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-		"predeploy" : "npm run build",
-		"deploy" : "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "startt": "cross-env SERVE=true webpack serve",
+    "buildd": "webpack",
+    "build-prod": "webpack --mode=production",
+    "clean": "rd /s /q dist"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +51,17 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.0"
-  }
+    "gh-pages": "^6.1.0",
+    "html-loader": "^4.2.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "bugs": {
+    "url": "https://github.com/Andr11L55/Contact-Form/issues"
+  },
+  "homepage": "https://github.com/Andr11L55/Contact-Form#readme",
+  "main": "webpack.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
