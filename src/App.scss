@@ -1,0 +1,277 @@
+$fontfam: Inter;
+$gray900Colour: #101828;
+$lightgrayColour: #d0d5dd;
+
+@mixin text($font, $font-size, $f-style, $f_weight, $line) {
+  font-family: $font;
+  font-size: $font-size;
+  font-style: $f-style;
+  font-weight: $f_weight;
+  line-height: $line;
+}
+
+@mixin img($image, $width, $height) {
+  background: url($image) lightgray 50% / cover no-repeat;
+  width: $width;
+  height: $height;
+}
+
+@mixin display($disp, $direct, $align) {
+  display: $disp;
+  flex-direction: $direct;
+  align-items: $align;
+}
+
+@mixin button(
+  $width,
+  $padding,
+  $border-radius,
+  $background,
+  $color,
+  $text-font,
+  $text-weight,
+  $text-size,
+  $text-line-height
+) {
+  display: flex;
+  width: $width;
+  padding: $padding;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  border-radius: $border-radius;
+  background: $background;
+  color: $color;
+  @include text(
+    $text-font,
+    $text-size,
+    normal,
+    $text-weight,
+    $text-line-height
+  );
+}
+
+body {
+  font-family: $fontfam;
+  background-color: rgba(239, 240, 242, 255);
+}
+
+.app {
+}
+
+.title {
+  @include text($fontfam, 25px, normal, 700, normal);
+  margin-top: 45px;
+  padding-left: 38px;
+}
+
+.contact_form {
+  @include display(flex, column, center);
+  margin-top: 37px;
+}
+
+.img_profile {
+  @include img("./avatar.svg", 161px, 161px);
+  border-radius: 161px;
+}
+
+.icon_cont {
+  left: 110px;
+  bottom: 35px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  label {
+    display: block;
+    position: relative;
+
+    input {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      width: 17.2px;
+      height: 14.05px;
+      left: 0.55px;
+      top: 2.01px;
+      position: absolute;
+    }
+  }
+}
+
+#input-image {
+  visibility: hidden;
+  display: none;
+}
+
+.circle-background {
+  width: 32px;
+  height: 32px;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background: #0e91af;
+  border-radius: 50%;
+}
+
+.iconCamera {
+  background-image: url("./camera_icon.svg");
+  width: 19px;
+  height: 19px;
+  left: 7px;
+  top: 6px;
+  position: absolute;
+}
+
+.first_last_name {
+  margin: 0;
+  margin-top: 21px;
+  color: $gray900Colour;
+  @include text($fontfam, 18px, normal, 600, normal);
+}
+
+.form_container {
+  margin-top: 30px;
+  @include display(flex, column, flex-start);
+  gap: 6px;
+}
+
+.form_label {
+  color: #344054;
+  @include text($fontfam, 14px, normal, 500, 20px);
+}
+
+.form_input {
+  @include display(flex, none, center);
+  width: 480px; // Use full width
+  max-width: 480px; // Set a maximum width if needed
+  padding: 15px 14px 14px 14px;
+  gap: 8px;
+  border-radius: 8px;
+  border: 1px solid $lightgrayColour;
+  background: #fff;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  @include text($fontfam, 16px, normal, 600, normal);
+  color: $gray900Colour;
+  margin-bottom: 6px;
+}
+
+
+.last {
+  margin-bottom: 30px;
+}
+
+.showPass {
+  position: relative;
+  left: 90%; // Adjust as needed
+  bottom: 85px;
+}
+
+.buttons {
+  @include display(flex, column, flex-start);
+  gap: 10px;
+  margin-bottom: 148px;
+  width: 100%;
+}
+
+
+.btn_submit {
+  @include button(100%, 12px 97px, 8px, #111, #fff, $fontfam, 600, 15px, 24px);
+}
+
+.btn_cancel {
+  @include button(
+    100%,
+    15px 133px 14px 133px,
+    8px,
+    #fff,
+    #111,
+    $fontfam,
+    500,
+    15px,
+    24px
+  );
+  font-feature-settings: "clig" off, "liga" off;
+}
+
+@media only screen and (max-width: 768px) {
+
+	.img_form {
+		margin-right: 45px;
+	}
+
+	.title {
+    font-size: 20px; // Adjust as needed for smaller screens
+    margin-top: 20px;
+  }
+
+	.form_container {
+		align-items: flex-end;
+	}
+  .form_label {
+    // width: 75%;
+		margin: 0; // Adjust as needed for smaller screens
+  }
+	.form_input {
+    width: 75%;
+  }
+	.contact_form {
+		max-width: 50%;
+		margin: 20px auto;
+		align-items: flex-end;
+	}
+
+  .showPass {
+    left: -7%;
+		bottom: 58px;
+// Adjust as needed
+  }
+
+	.buttons {
+		// width: 300px;
+	}
+	.btn_submit, .btn_cancel {
+		max-width: 270px;
+	}
+}
+
+@media only screen and (max-width: 576px) {
+  .title {
+    font-size: 20px; // Adjust as needed for smaller screens
+    margin-bottom: 20px;
+  }
+
+  .img_profile {
+    width: 120px; // Adjust as needed
+    height: 120px; // Adjust as needed
+  }
+
+	.icon_cont {
+		left: 85px;
+	}
+
+	.contact_form {
+		width: fit-content;
+		padding: 0 5px;
+		margin: 0 auto;
+	}
+
+	.form_container {
+		width: 110%;
+	}
+  .form_input {
+    font-size: 14px; // Adjust as needed for smaller screens
+    padding: 10px;
+		// max-width: 60%;
+  }
+	.showPass {
+		bottom: 50px;
+		left: -25px; // Adjust as needed
+  }
+	.btn_submit, .btn_cancel {
+		width: 170px;
+		padding:13px 97px;
+	}
+}
